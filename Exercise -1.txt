@@ -1,0 +1,96 @@
+1)
+create table SEMP 
+(
+enpno char(4),
+empname char(20),
+basic float(9,2),
+deptno char(2),
+depthead char(4)
+);
+
+2)
+create table SDEPT 
+(
+deptno char(2),
+deptname char(15)
+);
+
+3) insert into SDEPT(deptno,deptname)values(10,'development');
+   insert inro SDEP(deptno,deptname)values(20,training');
+
+4) insert into SEMP values(0001,'SUNIL', 6000, 10,null );
+ insert into SEMP values(0002,' HIREN', 8000, 20,Null);
+ insert into SEMP values(0003,' ALI', 4000, 10, 0001);
+ insert into SEMP values(0004,' GEORGE', 6000,Null, 0002);
+
+5)
+create table SUPPLIER
+(
+`S#` varchar(10),
+Sname varchar(10),
+Status int(4),
+City varchar(30)
+); 
+insert into supplier values('s1','shubham',4,'wardha'),('s2','shruti',5,'sangali'),('s3','jaiwant',6,'jalgaon');
+
+6)
+ create table parts
+    -> (
+    -> `p#` varchar(10),
+    -> Pname varchar(10),
+    -> color varchar(10),
+    -> weight int(4),
+    -> city varchar(10)
+    -> );
+
+insert into parts values('p1','break','black',4,'wardha'),('p2','clutch','black',5,'satara'),('p3','break','black',6,'sangali');
+
+7)
+
+create table PROJECTS
+(
+`J#` varchar(10),
+jname varchar(10),
+city varchar(10)
+);  
+
+insert into projects values('j1','shubham','wardha'),('j2','jaiwant','jalgaon'),('j3','shruti','sangali');
+
+8)
+create table SPJ(`S#` varchar(10),`P#` varchar(10),`J#` varchar(10),Qty int(10));
+insert into SPJ values('s1','p1','J1',10),('s2','p2','J2',20),('s3','p3','J3',30);
+
+5)select * from   SUPPLIER;
+6)select `S#`,Sname from Supplier;
+7)select pname,color from parts where city='London';
+8)select * from supplier where city="London";
+9)select * from supplier where city="paris"or city='Athens';
+10) select * from projects where city="Athens";
+11) select * from parts where weight between 12 and 14;
+12) select * from supplier where status >=20;
+13)select * from supplier where city!='Lomdon';
+14select city from supplier;
+15select `P#`,Pname,color,weight/1000.0,city from parts;
+select `P#`,Pname,color,weight*1000,city from parts;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
