@@ -1,0 +1,64 @@
+1. Display the Supplier name and the Quantity sold. 
+Ans-> 
+select supplier.sname,spj.qty 
+from supplier,spj
+where supplier.`S#`= spj.`S#`;
+
+**select sname,qty from supplier,spj where spj.`S#`= supplier.`S#`;
+
+2. Display the Part name and Quantity sold.   
+Ans->select pname,qty from parts,spj where parts.`p#`=spj.`P#`;
+or
+select parts.pname,spj.qty from spj,parts where parts.`p#`=spj.`p#`;
+
+3. Display the Project name and Quantity solds
+select projects.jname,spj.qty from projects,spj where projects.`J#` = spj.`j#`;
+
+4. Display the Supplier name, Part name, Project name and Quantity sold.   
+Ans->select sname,pname,jname,qty from parts,supplier, projects,spj 
+where supplier.`S#` = spj.`S#`and
+      parts.`P#`=spj.`P#` and
+      projects.`J#` = spj.`J#`;
+
+5. Display the Supplier name, Supplying Parts to a Project in the same City.   
+select sname,parts from supplier,projects,supplier_parts_project
+where supplier.`S#`= supplier_parts_project `S#`and
+parts.`P#` = supplier_parts_project `P#` and
+projects.`J#` = supplier_parts_project `J#`and
+parts.city=projects.city;
+
+6. Display the Part name that is ‘Red’ is color, and the Quantity sold
+
+select pname,color,qty from parts,spj
+where parts.`p#`=spj.`p#`having color ='red';
+
+7. Display all the Quantity sold by Suppliers with the Status = 20
+Ans->  select supplier.sname,spj.qty from supplier,spj 
+where supplier.`S#`= spj.`S#`  and status =20;
+
+8. Display all the Parts and Quantity with a Weight > 14.  
+Ams-> select parts.pname,spj.qty from parts,spj
+where parts.`P#`= spj.`P#` and parts.weight > 14; 
+
+9. Display all the Project names and City, which has bought more than 500 Parts
+Ans->select parts.pname,parts.city,spj.qty from parts, spj
+where parts.`p#`= spj.`p#`  and spj.qty > 500 ;
+
+10. Display all the Part names and Quantity sold that have a Weight less than 15.   
+Ans-> 
+select parts.pname,spj.qty from parts,spj
+where parts.`P#`=spj.`P#`  and parts.weight < 15;
+
+11. Display all the Employee names and the name of their Managers.
+Ans->
+
+
+
+
+
+
+
+
+
+
+
