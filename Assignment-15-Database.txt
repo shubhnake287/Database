@@ -1,0 +1,80 @@
+					Assignment – 15 
+                              Using Subqueries with DML Commands.
+
+1) Assume there is a table called Multicust, with all of the same column definitions as
+Salespeople. Write a command that inserts all salespeople with more than one customer into 
+this table.
+Ans->  				 
+create table  Multicust
+(
+snum int(4),
+sname varchar (10),
+city varchar (10),
+comm float (3,2)
+);
+
+insert into multicast select * from salespeople;
+
+or
+
+create table Multicust
+as 
+select * from salespeople
+where salespeople.snum IN 
+(select snum from customers
+group by snum
+having count(snum)>1);
+
+2) Write a command that deletes all customers with no current orders. 
+Ans->
+
+delete from customers
+where cnum in
+(select cnum from customers
+where cnum not in
+(select cnum from orders));
+
+
+3) Write a command that increases by twenty percent the commissions of all 
+salespeople with total orders above Rs.3,000. 
+Ans->
+
+update salespeople set comm = comm + (comm*(0.2))
+where salespeople.snum in  
+(select snum from orders
+where atm > 3000
+group by snum);
+
+BEFORE
++------+---------+-----------+------+
+| Snum | Sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | peel    | London    | 0.12 |
+| 1002 | serres  | San Jose  | 0.13 |
+| 1004 | motika  | london    | 0.11 |
+| 1007 | rifkin  | barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
+| 1100 | Blanco  | san jose  | NULL |
++------+---------+-----------+------+
+
+
+After
++------+---------+-----------+------+
+| Snum | Sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | peel    | London    | 0.14 |
+| 1002 | serres  | San Jose  | 0.16 |
+| 1004 | motika  | london    | 0.11 |
+| 1007 | rifkin  | barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
+| 1100 | Blanco  | san jose  | NULL |
++------+---------+-----------+------+
+
+
+
+
+
+
+
+
+
