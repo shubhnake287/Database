@@ -1,0 +1,29 @@
+EXERCISE NO. 6 :-
+
+1. Display all the Suppliers with the same Status as the supplier, ‘CLARK’. 
+->  select * from S where Status = (select Status from S where Sname = 'Clark');
+     
+2. Display all the Employees in the same department as the employee ‘MILLER’.  
+-> select Ename from Emp where deptno = (select deptno from Emp where Ename = 'Miller');
+   
+3. Display all the Parts which have more Weight than all the Red parts.
+-> select Pname, Weight from P where weight >ALL (select weight from P where color = 'red');
+
+4. Display all the Projects going on in the same city as the project ‘TAPE’.   
+->  select Jname "Project Name" from J where city = (select city from J where Jname = 'TAPE');
+
+5. Display all the Parts with Weight less than all the Green parts.  
+-> select Pname, Weight from P where weight <ALL (select weight from P where color = 'green');
+
+6. Display the name of the Supplier who has sold the maximum Quantity (in one sale).      
+-> select Sname "Suppliers Name" from S where `S#` = (select `S#` from SPJ where Qty = (select max(Qty) from SPJ));
+
+7. Display the name of the Employee with the minimum Salary.      
+-> select Ename "Employee Name", Min(Sal) from Emp GROUP BY Ename ORDER BY min(sal) limit 1;
+
+8. Display the name of the Supplier who has sold the maximum overall Quantity (sum of Sales).      
+-> select Sname "Suppliers Name" from S where `S#` = (select `S#` from SPJ where Qty = (select max(Qty) from SPJ GROUP BY Qty ORDER BY max(Qty) desc limit 1));
+
+9. Display the name of the Department with the maximum number of Employees.   
+-> 1) select dname "Department name" from dept where deptno = (select deptno from emp GROUP BY deptno ORDER BY count(deptno) desc limit 1);
+   2) select dept.dname , count(emp.ename) from emp , dept where emp.deptno = dept.deptno group by dept.dname order by count(emp.ename) desc limit 1 ;
